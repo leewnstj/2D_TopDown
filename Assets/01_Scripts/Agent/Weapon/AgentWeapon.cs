@@ -6,10 +6,12 @@ public class AgentWeapon : MonoBehaviour
 {
     private float _desireAngle;
     protected WeaponRenderer _weaponRenderer;
+    protected Weapon _weapon;
 
     protected virtual void Awake()
     {
         _weaponRenderer = GetComponentInChildren<WeaponRenderer>();
+        _weapon = GetComponentInChildren<Weapon>();
     }
 
     public virtual void AimWeapon(Vector2 pointerPos)
@@ -31,6 +33,15 @@ public class AgentWeapon : MonoBehaviour
             _weaponRenderer.FlipSprite(_desireAngle > 90f || _desireAngle < -90f);
             _weaponRenderer.RendererBehindeHead(_desireAngle > 0 && _desireAngle < 180) ;
         }
+    }
 
+    public virtual void Shoot()
+    {
+        _weapon?.TryShooting();
+    }
+
+    public virtual void StopShooting()
+    {
+        _weapon?.StopShooting();
     }
 }
