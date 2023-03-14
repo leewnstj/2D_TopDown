@@ -12,13 +12,28 @@ public class Weapon : MonoBehaviour
     public WeaponDataSO WeaponData => _weaponDataSO;
 
     public UnityEvent OnShoot;
-    public UnityEvent OnShootNoAmmon;
+    public UnityEvent OnShootNoAmmo;
     public UnityEvent OnStopShooting;
     protected bool _isShooting;
+    protected bool _delayCoroutine = false;
+
+    #region AMMO 관련 코드들
+    protected int _ammo;
+    public int Ammo
+    {
+        get { return _ammo; }
+        set 
+        { 
+            _ammo = Mathf.Clamp(value, 0, _weaponDataSO.ammoCapacity);
+        }
+    }
+    public bool AmmoFull => Ammo == _weaponDataSO.ammoCapacity;
+    public int EmptyBullet => _weaponDataSO.ammoCapacity - _ammo;
+    #endregion
 
     private void Awake()
     {
-        
+        _ammo = _weaponDataSO.ammoCapacity;
     }
 
     private void Update()
@@ -28,14 +43,40 @@ public class Weapon : MonoBehaviour
 
     public void UseWeapon()
     {
-        if(_isShooting )
+        if(_isShooting && _delayCoroutine == false)
         {
-            OnShoot?.Invoke();
-            for(int i = 0; i < _weaponDataSO.bulletCount; i++)
+            if (Ammo > 0)
             {
-                ShootBullet();
+                OnShoot?.Invoke();
+                for (int i = 0; i < _weaponDataSO.bulletCount; i++)
+                {
+                    ShootBullet();
+                }
             }
+            else
+            {
+                _isShooting = false;
+                OnShootNoAmmo?.Invoke();
+                return;
+            }
+            FinishOneShooting();
         }
+    }
+
+    private void FinishOneShooting()
+    {
+        StartCoroutine(DelayNextShootCoroutine());
+        if(_weaponDataSO.autoFire == false)
+        {
+            _isShooting = true;
+        }
+    }
+
+    private IEnumerator DelayNextShootCoroutine()
+    {
+        _delayCoroutine = true;
+        yield return new WaitForSeconds(_weaponDataSO.weaponDelay);
+        _delayCoroutine = false;
     }
 
     private void ShootBullet()
