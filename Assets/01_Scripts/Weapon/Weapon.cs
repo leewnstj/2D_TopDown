@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
@@ -81,7 +83,21 @@ public class Weapon : MonoBehaviour
 
     private void ShootBullet()
     {
-        Debug.Log("葛贰馆瘤 户具户具");
+        SpawnBullet(_muzzle.position, CalculateAngle(_muzzle));
+    }
+
+
+    private Quaternion CalculateAngle(Transform muzzle)
+    {
+        float spread = Random.Range(-_weaponDataSO.spreadAngle, _weaponDataSO.spreadAngle);
+        Quaternion bulletSpreadRot = Quaternion.Euler(new Vector3(0, 0, spread));
+        return muzzle.transform.rotation * bulletSpreadRot;
+    }
+    private void SpawnBullet(Vector3 position, Quaternion rot)
+    {
+        RegularBullet b = PoolManager.Instance.Pop("Bullet") as RegularBullet;
+        b.SetPositionAndRotation(position, rot);
+        b.IsEnemy = false;
     }
 
     public void TryShooting()
