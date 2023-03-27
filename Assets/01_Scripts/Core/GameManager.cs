@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private PoolableMono _bulletPrefab;
+    [SerializeField] private PollingListSO _poolingList;
 
     private void Awake()
     {
@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
     {
         PoolManager.Instance = new PoolManager(transform);
 
-        PoolManager.Instance.CreatePool(_bulletPrefab, 20);
+        _poolingList.lis.ForEach(p => PoolManager.Instance.CreatePool(p.prefab, p.poolCount));
     }
 }

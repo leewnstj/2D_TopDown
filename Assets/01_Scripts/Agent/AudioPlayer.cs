@@ -21,7 +21,7 @@ public class AudioPlayer : MonoBehaviour
     public void PlayerClipWithVariablePitch(AudioClip clip)
     {
         float randomPitch = Random.Range(-_pitchRandomness, _pitchRandomness);
-        _audioSource.pitch = randomPitch;
+        _audioSource.pitch = _basePitch + randomPitch;
         PlayClip(clip);
     }
 

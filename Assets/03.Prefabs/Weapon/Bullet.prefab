@@ -158,6 +158,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnemy: 0
-  DamageFactor: 1
-  _TTL: 1.5
-  _bulletSpeed: 20
+  _bulletData: {fileID: 11400000, guid: 7ca014d9d07aaa84e8f5b7e8a3e891d3, type: 2}
