@@ -36,6 +36,10 @@ public class RegularBullet : PoolableMono
         {
             HitObstacle(collision);
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            HitEnemy(collision);
+        }
 
         isDead = true;
         PoolManager.Instance.Push(this);
@@ -56,6 +60,15 @@ public class RegularBullet : PoolableMono
 
     private void HitEnemy(Collider2D collision)
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10f, 1<<LayerMask.NameToLayer("Enemy"));
+
+        Debug.Log(hit.collider);
+
+        if (hit.collider != null)
+        {
+            IDamagerable damageable = hit.collider.gameObject.GetComponent<IDamagerable>();
+            damageable?.GetHit(_bulletData.damage, gameObject, hit.point, hit.normal);
+        }
 
     }
 
