@@ -38,6 +38,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Desolves: 0.5
+    - _DisolveOutline: 0.05
+    - _IsDisolves: 0
+    - _IsSolidColor: 0
     - _IsSollidColor: 0
-    m_Colors: []
+    - _NoiseScale: 20
+    - _ShowRate: 0
+    m_Colors:
+    - _DesolveColor: {r: 5.656854, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

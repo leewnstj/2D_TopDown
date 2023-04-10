@@ -19,15 +19,21 @@ public class EnemyHealth : MonoBehaviour,IDamagerable
     public UnityEvent OnGetHit = null;
     public UnityEvent OnDie = null;
 
+    private AIActionData _actionData;
+
     private void Awake()
     {
         _currentHealth = _maxHealth;
+        _actionData = transform.Find("AI").GetComponent<AIActionData>();
     }
 
     public void GetHit(int damage, GameObject damageDealer, Vector3 hitPoint, Vector3 normal)
     {
         if (_isDead) return;
 
+        _actionData.hitNormal = normal;
+        _actionData.hitPoint = hitPoint;
+        
         _currentHealth -= damage;
 
         OnGetHit?.Invoke();

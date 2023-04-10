@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     [SerializeField] private PollingListSO _poolingList;
+
+    [SerializeField] private Transform _playerTrm;
+    public Transform PlayerTrm => _playerTrm;
 
     private void Awake()
     {
@@ -15,6 +19,8 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Multiple GameManager is running! Check!");
         }
         Instance = this;
+
+        TimeComtroller.Instance = gameObject.AddComponent<TimeComtroller>();
 
         MakePool();
     }

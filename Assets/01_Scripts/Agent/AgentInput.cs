@@ -13,12 +13,23 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private bool _fireButtonDown = false;
 
+    public UnityEvent OnReloadButtonPress;
+
     private void Update()
     {
         GetMovementInput();
         GetPointerInput();
 
         GetFireInput();
+        GetReloadInput();
+    }
+
+    private void GetReloadInput()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            OnReloadButtonPress?.Invoke();
+        }
     }
 
     private void GetFireInput()

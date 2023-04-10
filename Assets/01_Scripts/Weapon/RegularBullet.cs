@@ -60,7 +60,8 @@ public class RegularBullet : PoolableMono
 
     private void HitEnemy(Collider2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10f, 1<<LayerMask.NameToLayer("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10f, 
+            1<<LayerMask.NameToLayer("Enemy"));
 
         Debug.Log(hit.collider);
 
@@ -68,6 +69,11 @@ public class RegularBullet : PoolableMono
         {
             IDamagerable damageable = hit.collider.gameObject.GetComponent<IDamagerable>();
             damageable?.GetHit(_bulletData.damage, gameObject, hit.point, hit.normal);
+
+            ImpactScript impact = PoolManager.Instance.Pop(_bulletData.impactEnemyPrefab.name) as ImpactScript;
+            Quaternion rot = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360f)));
+            Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
+            impact.SetPositionAndRotation(hit.point + randomOffset, rot);
         }
 
     }
