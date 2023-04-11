@@ -61,7 +61,7 @@ public class RegularBullet : PoolableMono
     private void HitEnemy(Collider2D collision)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10f, 
-            1<<LayerMask.NameToLayer("Enemy"));
+           LayerMask.GetMask("Enemy"));
 
         Debug.Log(hit.collider);
 

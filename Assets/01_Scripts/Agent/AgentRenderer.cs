@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AgentRenderer : MonoBehaviour
 {
-    private SpriteRenderer _spriteRendere;
+    protected SpriteRenderer _spriteRendere;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _spriteRendere = GetComponent<SpriteRenderer>();
     }

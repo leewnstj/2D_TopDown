@@ -13,15 +13,15 @@ public class FeedbackDisolve : FeedBack
     public UnityEvent FeedbackComplete;
     public override void CompleteFeedBack()
     {
-        _spriteRenderer.material.SetInt("_IsDisolves", 0);
+        _spriteRenderer.material.SetInt("_IsDissolve", 0);
         _spriteRenderer.material.DOComplete();
-        _spriteRenderer.material.SetFloat("_Desolves", 1);
+        _spriteRenderer.material.SetFloat("_Dissolve", 1);
     }
 
     public override void CreateFeedBack()
     {
-        _spriteRenderer.material.SetInt("_IsDisolves", 1);
-        _spriteRenderer.material.DOFloat(0, "_Desolves", _duration).OnComplete(() =>
+        _spriteRenderer.material.SetInt("_IsDissolve", 1);
+        _spriteRenderer.material.DOFloat(0, "_Dissolve", _duration).OnComplete(() =>
         {
             FeedbackComplete?.Invoke();
         });

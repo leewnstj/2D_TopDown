@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    None,
+    Health,
+    Ammo,
+    Coin
+}
+
 public class Define : MonoBehaviour
 {
     protected static Camera _mainCam = null;
