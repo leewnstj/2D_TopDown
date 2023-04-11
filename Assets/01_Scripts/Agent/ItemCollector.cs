@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ItemCollector : MonoBehaviour
 {
@@ -30,10 +31,28 @@ public class ItemCollector : MonoBehaviour
 
             if(Vector2.Distance(transform.position, item.transform.position) < 0.1f)
             {
+                int value = item.ItemData.GetAmount();
+
+                PopupText text = PoolManager.Instance.Pop("PopupText") as PopupText;
+                text.SetUp(value.ToString(), transform.position + new Vector3(0,0.5f,0), item.ItemData.PopupTextColor);
+
+                ProcessItem(item.ItemData.ItemType, value);
                 item.PickUpResource(); //아이템 줍기
                 _collectList.RemoveAt(i);
                 i--;
             }
+        }
+    }
+
+    public UnityEvent<int> OnAmmoAdded = null;
+
+    private void ProcessItem(ItemType type, int value)
+    {
+        switch(type)
+        {
+            case ItemType.Ammo:
+                OnAmmoAdded?.Invoke(value);
+                break;
         }
     }
 

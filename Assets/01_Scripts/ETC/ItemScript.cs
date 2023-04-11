@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemScript : PoolableMono
 {
     [SerializeField] private ResourceDataSO _itemData;
+    public ResourceDataSO ItemData => _itemData;
+
     private AudioSource _audioSource;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;

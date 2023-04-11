@@ -17,5 +17,5 @@ MonoBehaviour:
   ItemType: 2
   _minAmount: 10
   _maxAmount: 15
-  PopupTextColor: {r: 0.5660378, g: 0.34610254, b: 0.19437522, a: 0}
+  PopupTextColor: {r: 0.5660378, g: 0.34610254, b: 0.19437522, a: 1}
   UseSound: {fileID: 8300000, guid: 1adb6ab7f57563a4a952d8d20f2e415c, type: 3}

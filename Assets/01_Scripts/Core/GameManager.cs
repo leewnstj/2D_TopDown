@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,12 +52,15 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             currentTime += Time.deltaTime;
+
             if (currentTime >= 3f)
             {
                 currentTime = 0;
                 int idx = Random.Range(0, _spawnPointList.Count);
 
                 EnemyBrain enemy = PoolManager.Instance.Pop("EnemyGrowler") as EnemyBrain;
+                
+                Sequence seq = DOTween.Sequence();
 
                 enemy.transform.position = _spawnPointList[idx].position;
                 enemy.ShowEnemy();
