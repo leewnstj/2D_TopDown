@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviour
     public UnityEvent OnShoot;
     public UnityEvent OnShootNoAmmo;
     public UnityEvent OnStopShooting;
+    public UnityEvent<int> OnChangeAmmo = null;
+
     protected bool _isShooting;
     protected bool _delayCoroutine = false;
 
@@ -54,6 +56,7 @@ public class Weapon : MonoBehaviour
                 {
                     ShootBullet();
                     Ammo--;
+                    OnChangeAmmo?.Invoke(Ammo);
                 }
             }
             else

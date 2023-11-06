@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7005467518665693917
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881454, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589223431966881457, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6576406407481533746, guid: d5d203f91e7c5934497686e4ea8c4fc6, type: 3}
+    - target: {fileID: 3589223431966881457, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 3589223431966881458, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: m_Name
+      value: coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516479802703611382, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6345baaf4f52ab34f91a8adc4c26fd94, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+--- !u!1 &5834149600201534575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3589223431966881458, guid: 15e8d8406d47f934693d515d87ff42a7, type: 3}
+  m_PrefabInstance: {fileID: 7005467518665693917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &680768892599267694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834149600201534575}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 7657a7a6e1bdc0b489805b56891a5c50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

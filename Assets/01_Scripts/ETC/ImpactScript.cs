@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ImpactScript : PoolableMono
 {
-    private AudioSource _audioSource;
+    protected AudioSource _audioSource;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
     }
@@ -16,7 +16,7 @@ public class ImpactScript : PoolableMono
         PoolManager.Instance.Push(this);
     }
 
-    public override void Reset()
+    public override void Init()
     {
         transform.localPosition = Vector3.one;
         transform.localRotation = Quaternion.identity;

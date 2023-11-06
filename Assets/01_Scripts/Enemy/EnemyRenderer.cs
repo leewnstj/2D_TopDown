@@ -29,7 +29,7 @@ public class EnemyRenderer : AgentRenderer
 
         _effectScript = PoolManager.Instance.Pop("DustEffect") as EffectScript;
         _effectScript.transform.position = transform.position + new Vector3(0, -0.5f, 0);
-        _effectScript.PlayEffect();
+        _effectScript.PlayEffect(time);
 
         transform.localPosition = _offset;
         float currentRate = 1f;
@@ -49,7 +49,6 @@ public class EnemyRenderer : AgentRenderer
         }
         transform.localPosition = Vector3.zero;
         _animator.SetAnimationSpeed(1);
-        _effectScript.StopEffect();
 
         CallBackAction?.Invoke();
     }
@@ -59,9 +58,10 @@ public class EnemyRenderer : AgentRenderer
         StopAllCoroutines();
         _animator.SetAnimationSpeed(1);
         _spriteRendere.material.SetFloat(_ShowRateHash, -1f);
-        if(_effectScript != null )
-        {
-            _effectScript.StopEffect();
-        }
+
+        //if(_effectScript != null && _effectScript.gameObject.activeSelf)
+        //{
+        //    _effectScript.StopEffect();
+        //}
     }
 }

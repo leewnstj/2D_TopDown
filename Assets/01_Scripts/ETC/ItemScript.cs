@@ -35,7 +35,7 @@ public class ItemScript : PoolableMono
 
 
 
-    public override void Reset()
+    public override void Init()
     {
         gameObject.layer = LayerMask.NameToLayer("Item");
         _spriteRenderer.enabled = true;

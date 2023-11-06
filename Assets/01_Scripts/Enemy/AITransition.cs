@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class AITransition : MonoBehaviour
 {
-    public List<AIDecision> decisions;
+    protected List<AIDecision> decisions;
     public AIState TransitionState;
 
     private void Awake()
     {
+        decisions = new List<AIDecision>();
         GetComponents<AIDecision>(decisions);
     }
 

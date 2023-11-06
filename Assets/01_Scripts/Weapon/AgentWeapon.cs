@@ -14,6 +14,17 @@ public class AgentWeapon : MonoBehaviour
     [SerializeField] private AudioClip _cannotSound = null;
     [SerializeField] private int _maxTotalAmmo = 9999, _totalAmmo = 300;
 
+    public int TotalAmmo
+    {
+        get => _totalAmmo;
+        set
+        {
+            _totalAmmo = value;
+            _totalAmmo = Mathf.Clamp(_totalAmmo, 0, _maxTotalAmmo);
+            OnChangeTotalAmmo?.Invoke(_weapon.Ammo, _totalAmmo);
+        }
+    }
+
     private AudioSource _audioSource;
     private bool _isReloading = false;
     public bool IsReloading => _isReloading;
@@ -25,6 +36,12 @@ public class AgentWeapon : MonoBehaviour
 
         _audioSource = GetComponent<AudioSource>();
     }
+
+    protected virtual void Start()
+    {
+        OnChangeTotalAmmo?.Invoke(_weapon.Ammo, _totalAmmo);
+    }
+
     #region 리로딩 관련 로직
     public void Reload()
     {
@@ -59,6 +76,8 @@ public class AgentWeapon : MonoBehaviour
         _totalAmmo -= reloadedAmmo;
         _weapon.Ammo += reloadedAmmo;
 
+        OnChangeTotalAmmo?.Invoke(_weapon.Ammo, _totalAmmo);    //현재 총의 탄창수와 내가 가진 탄환수
+
         _isReloading = false;
     }
 
@@ -69,6 +88,11 @@ public class AgentWeapon : MonoBehaviour
         _audioSource.Play();
     }
     #endregion
+
+    public void AddAmmo(int count)
+    {
+        TotalAmmo += count;
+    }
 
     public virtual void AimWeapon(Vector2 pointerPos)
     {

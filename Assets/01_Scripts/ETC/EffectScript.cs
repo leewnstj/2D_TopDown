@@ -19,10 +19,17 @@ public class EffectScript : PoolableMono
         _light.enabled = false;
     }
 
-    public void PlayEffect()
+    public void PlayEffect(float time)
     {
         _particleEffect.Play();
         _light.enabled = true;
+        StartCoroutine(StopDelay(time));
+    }
+
+    private IEnumerator StopDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        StopEffect();
     }
 
     public void StopEffect()
@@ -51,7 +58,7 @@ public class EffectScript : PoolableMono
         PoolManager.Instance.Push(this);
     }
 
-    public override void Reset()
+    public override void Init()
     {
         _light.intensity = _initIntensity;
     }

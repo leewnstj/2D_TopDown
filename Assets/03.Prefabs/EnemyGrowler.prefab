@@ -126,10 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0be288e3d59ca4f847aa066594a5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Actions: []
-  Transitions:
-  - {fileID: 2419204135782610615}
-  - {fileID: 2419204137111970534}
 --- !u!114 &2419204135761134160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,8 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670c36158622b2b4caa769f8cac1becd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decisions:
-  - {fileID: 2419204135782610612}
   TransitionState: {fileID: 2419204137529197451}
 --- !u!114 &2419204135782610612
 MonoBehaviour:
@@ -308,6 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2419204136135051124}
   - component: {fileID: 2419204136135051125}
+  - component: {fileID: 802591293862683280}
   m_Layer: 0
   m_Name: AttackState
   m_TagString: Untagged
@@ -343,9 +338,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0be288e3d59ca4f847aa066594a5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Actions: []
-  Transitions:
-  - {fileID: 2419204136578500667}
+--- !u!114 &802591293862683280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419204136135051122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24343c52e776b640899063ad2aa569a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2419204136200335205
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +364,7 @@ GameObject:
   - component: {fileID: 2419204136200335206}
   - component: {fileID: 2419204136200335207}
   - component: {fileID: 2419204136200335204}
+  - component: {fileID: 3491511810818557875}
   m_Layer: 7
   m_Name: EnemyGrowler
   m_TagString: Untagged
@@ -386,6 +391,7 @@ Transform:
   - {fileID: 2419204135561999788}
   - {fileID: 2419204136984109731}
   - {fileID: 2419204136719065256}
+  - {fileID: 891135941356479871}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -438,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50ce044b46f31b4a84930c104db5410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 15
   OnGetHit:
     m_PersistentCalls:
       m_Calls:
@@ -553,6 +559,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2419204136200335207}
+        m_TargetAssemblyTypeName: EnemyBrain, Assembly-CSharp
+        m_MethodName: Dead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2419204136200335207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,6 +614,72 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnAttackButtonPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3491511810818557875}
+        m_TargetAssemblyTypeName: EnemyMeleeAttack, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnResetPool:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2419204136200335209}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2419204135663807803}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2419204136200335204}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2419204136200335206}
+        m_TargetAssemblyTypeName: EnemyHealth, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   BasePosition: {fileID: 2419204135561999788}
   CurrentState: {fileID: 2419204137529197451}
   _isActive: 0
@@ -627,6 +711,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3491511810818557875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419204136200335205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c641255d7855c4d984e1bc48a3b152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackFeedback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2419204137594677897}
+        m_TargetAssemblyTypeName: AgentSound, Assembly-CSharp
+        m_MethodName: PlayAttackClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _atkDelay: 1
+  _damage: 1
 --- !u!1 &2419204136206805653
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitNormal: {x: 0, y: 0, z: 0}
   hitPoint: {x: 0, y: 0, z: 0}
+  IsAttack: 0
 --- !u!1 &2419204136254690484
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,8 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670c36158622b2b4caa769f8cac1becd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decisions:
-  - {fileID: 2419204136254690489}
   TransitionState: {fileID: 2419204135761134158}
 --- !u!114 &2419204136254690489
 MonoBehaviour:
@@ -783,8 +895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670c36158622b2b4caa769f8cac1becd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decisions:
-  - {fileID: 2419204136578500666}
   TransitionState: {fileID: 2419204135761134158}
 --- !u!114 &2419204136578500666
 MonoBehaviour:
@@ -810,6 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2419204136719065256}
   - component: {fileID: 2419204136719065259}
+  - component: {fileID: 7331843032948763882}
   m_Layer: 7
   m_Name: ItemDropper
   m_TagString: Untagged
@@ -848,6 +959,22 @@ MonoBehaviour:
   _dropEffect: 1
   _dropPower: 2
   _dropChance: 0.8
+--- !u!114 &7331843032948763882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419204136719065257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb52499c55844b34c8e36ef4efd40155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropTable: {fileID: 11400000, guid: 29b598d35c62a50478ba3a339f0cc364, type: 2}
+  _dropEffect: 1
+  _dropPower: 2
+  _dropChance: 1
 --- !u!1 &2419204136984109790
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +1038,19 @@ MonoBehaviour:
   _duration: 1
   FeedbackComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2419204136200335207}
+        m_TargetAssemblyTypeName: EnemyBrain, Assembly-CSharp
+        m_MethodName: GotoPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2419204137111970535
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,8 +1096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670c36158622b2b4caa769f8cac1becd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decisions:
-  - {fileID: 2419204137111970536}
   TransitionState: {fileID: 2419204136135051125}
 --- !u!114 &2419204137111970536
 MonoBehaviour:
@@ -1020,9 +1157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0be288e3d59ca4f847aa066594a5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Actions: []
-  Transitions:
-  - {fileID: 2419204136254690487}
 --- !u!114 &2419204137529197453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,7 +1308,7 @@ MonoBehaviour:
   - {x: 0.0046565533, y: -0.42909724, z: 0}
   m_ShapePathHash: 436673419
   m_Mesh: {fileID: 0}
-  m_InstanceId: 49570
+  m_InstanceId: 51098
 --- !u!114 &2419204137594677897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,3 +1462,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: {x: 0, y: -0.8, z: 0}
+--- !u!1001 &5383957106510311123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2419204136169866663}
+    m_Modifications:
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.895
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709102, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109996904303709102, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+--- !u!4 &891135941356479871 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5109996904303709100, guid: 1a6b2eaf556d5c4408fa2f0ad32971ee, type: 3}
+  m_PrefabInstance: {fileID: 5383957106510311123}
+  m_PrefabAsset: {fileID: 0}

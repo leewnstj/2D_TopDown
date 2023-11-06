@@ -23,6 +23,7 @@ public class AgentMovement : MonoBehaviour
     {
         _rigid.velocity = Vector2.zero;
         _currentVelocity = 0;
+        _movementDirection = Vector2.zero;
     }
 
     public void MoveAgent(Vector2 movementInput)

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropList:
   - {fileID: 11400000, guid: 0c5a121c0bb3dd24f83b3066ff13211f, type: 2}
+  - {fileID: 11400000, guid: c37982168e4da9c49a91679d99f93c6a, type: 2}

@@ -8,9 +8,13 @@ public class EnemyBrain : PoolableMono
     public Transform Target;
 
     public UnityEvent<Vector2> OnMovementKeyPress;
-    public UnityEvent<Vector2> OnPointerPositionChanged;
+    public UnityEvent<Vector2> OnPointerPositionChanged; //마우스 방향 전환
 
-    public Transform BasePosition;
+    public UnityEvent OnAttackButtonPress = null; //이 녀석 발행만 해주기
+
+    public UnityEvent OnResetPool = null;
+
+    public Transform BasePosition; //거리 측정을 몬스터 바닥에서
 
     public AIState CurrentState;
 
@@ -55,14 +59,32 @@ public class EnemyBrain : PoolableMono
         OnPointerPositionChanged?.Invoke(targetPosition);
     }
 
-    public override void Reset()
+    public override void Init()
     {
         _isActive = false;
+        _enemyRenderer.Reset();
+
+        OnResetPool?.Invoke();
     }
 
     public void ShowEnemy()
     {
         _isActive = false;
         _enemyRenderer.ShowProgress(2f, () => _isActive = true);
+    }
+
+    public void Attack()
+    {
+        OnAttackButtonPress?.Invoke();
+    }
+
+    public void Dead()
+    {
+        _isActive = false;
+    }
+
+    public void GotoPool()
+    {
+        PoolManager.Instance.Push(this);
     }
 }

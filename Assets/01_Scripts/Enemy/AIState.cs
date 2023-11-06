@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AIState : MonoBehaviour
 {
-    public List<AIAction> Actions = new List<AIAction>();
-    public List<AITransition> Transitions = new List<AITransition>();
+    protected List<AIAction> Actions = new List<AIAction>();
+    protected List<AITransition> Transitions = new List<AITransition>();
 
     private EnemyBrain _brain;
 

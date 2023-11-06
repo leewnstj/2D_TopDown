@@ -32,7 +32,7 @@ public class RegularBullet : PoolableMono
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             HitObstacle(collision);
         }
@@ -84,7 +84,7 @@ public class RegularBullet : PoolableMono
         transform.SetPositionAndRotation(pos, rot);
     }
 
-    public override void Reset()
+    public override void Init()
     {
         isDead = false;
         _timeToLive = 0;

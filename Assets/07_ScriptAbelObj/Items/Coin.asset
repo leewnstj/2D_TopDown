@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff54f95a29c305b488d4aeac4462065b, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  Rate: 0
-  ItemPrefab: {fileID: 0}
-  ItemType: 0
+  Rate: 1
+  ItemPrefab: {fileID: 5834149600201534575, guid: 7c8e6afb74215064cb2437b3c0a13cff, type: 3}
+  ItemType: 3
   _minAmount: 1
   _maxAmount: 5
-  PopupTextColor: {r: 0, g: 0, b: 0, a: 0}
-  UseSound: {fileID: 0}
+  PopupTextColor: {r: 1, g: 0.84337664, b: 0, a: 0}
+  UseSound: {fileID: 8300000, guid: 0ea30725e3885334ba37e87d10bdfaa5, type: 3}

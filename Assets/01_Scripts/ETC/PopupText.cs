@@ -35,7 +35,7 @@ public class PopupText : PoolableMono
         });
     }
 
-    public override void Reset()
+    public override void Init()
     {
         _textMesh.color = Color.white;
         _textMesh.fontSize = 7f;
